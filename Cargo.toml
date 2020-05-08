@@ -1,0 +1,12 @@
+[package]
+name = "lr1-parser"
+version = "0.1.0"
+authors = ["imtsuki <me@qjx.app>"]
+description = "A simple LR(1) parser"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = "2.33.0"
+structopt = "0.3.14"
