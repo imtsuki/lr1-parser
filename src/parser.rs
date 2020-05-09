@@ -29,10 +29,18 @@ impl Parser {
             );
             let s = state_stack.last().unwrap();
             let a = &input[index];
-            match self.action.get(&(*s, Terminal(a.clone()))) {
-                None => panic!("Parse Error"),
+
+            match self.action.get(&(
+                *s,
+                if a.parse::<u64>().is_ok() {
+                    Terminal("num".to_owned())
+                } else {
+                    Terminal(a.clone())
+                },
+            )) {
+                None => panic!("Parser error: no action for state {}, token {:?}", s, a),
                 Some(Shift(s)) => {
-                    symbol_stack.push(Nonterminal(a.clone()));
+                    symbol_stack.push(Terminal(a.clone()));
                     state_stack.push(*s);
                     println!("Action: S{}", s);
                     index += 1;

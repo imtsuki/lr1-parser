@@ -87,7 +87,7 @@ impl Lr1ParserBuilder {
 
         println!("First Sets: {:?}", firsts);
 
-        println!("# Phase 2. Compute LR(1) Closures and go(I, S) Function");
+        println!("# Phase 2. Compute LR(1) Closures and go(I, X) Function");
 
         let mut closures: Vec<Closure> = Vec::new();
         let mut go: HashMap<(usize, Symbol), usize> = HashMap::new();
